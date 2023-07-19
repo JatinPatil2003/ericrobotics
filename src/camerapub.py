@@ -7,13 +7,11 @@ from cv_bridge import CvBridge
 
 def main():
     rospy.init_node('camera_publisher_node', anonymous=True)
-    rate = rospy.Rate(10)  # Set the publishing rate (10 Hz in this case)
+    rate = rospy.Rate(10) 
 
-    # Replace 'camera_topic' with the topic name to publish the camera frames
     pub = rospy.Publisher('/normal_image', Image, queue_size=10)
     bridge = CvBridge()
 
-    # Open the camera (you can also use other image sources like video files)
     cap = cv2.VideoCapture(0)
 
     while not rospy.is_shutdown():
@@ -22,10 +20,8 @@ def main():
             rospy.logerr("Failed to read camera frame.")
             break
 
-        # Convert the OpenCV image to a ROS Image message
         ros_image_msg = bridge.cv2_to_imgmsg(frame, "bgr8")
 
-        # Publish the ROS Image message
         pub.publish(ros_image_msg)
         cv2.imshow('Webcam', frame)
 

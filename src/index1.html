@@ -9,7 +9,7 @@
 
   <script>
     const imageElement = document.getElementById('image');
-    const socket = new WebSocket('ws://localhost:8765'); // Replace with your WebSocket server URL
+    const socket = new WebSocket('ws://localhost:8765'); 
 
     socket.addEventListener('open', function (event) {
       console.log('WebSocket connection established');

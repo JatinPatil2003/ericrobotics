@@ -19,7 +19,6 @@ msg.format = "jpeg"
 
 
 def camera_topic_callback(msgs):
-    # Convert ROS CompressedImage to OpenCV image
     msg.data = msgs.data
 
 async def video_stream(websocket, path):
@@ -45,7 +44,7 @@ async def video_stream(websocket, path):
 
 
 camera_subscriber = rospy.Subscriber('camera_encoded', CompressedImage, camera_topic_callback)
-start_server = websockets.serve(video_stream, 'localhost', 8765)  # Replace 'localhost' with the appropriate IP address
+start_server = websockets.serve(video_stream, 'localhost', 8765)  
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
