@@ -33,11 +33,11 @@ async def video_stream(websocket, path):
             # msg.format = "jpeg"
             # msg.data = encoded_frame
 
-            img_bytes = bridge.compressed_imgmsg_to_cv2(msg)
+            # img_bytes = bridge.compressed_imgmsg_to_cv2(msg)
 
             base64_str = base64.b64encode(msg.data).decode('utf-8')
             image_data = {'base64': base64_str}
-            json_data = json.dumps(image_data)
+            # json_data = json.dumps(image_data)
             await asyncio.wait([client.send(json.dumps(image_data)) for client in connected_clients])
             print("sent")
     finally:
