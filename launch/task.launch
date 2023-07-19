@@ -1,0 +1,5 @@
+<launch>
+  <node name="camerapub_node" pkg="ericrobotics" type="camerapub.py" output="screen"/>
+  <node name="cameraencode_node" pkg="ericrobotics" type="cameraencode.py" output="screen"/>
+  <node name="websocketserver_node" pkg="ericrobotics" type="websocketserver.py" output="screen"/>
+</launch>
